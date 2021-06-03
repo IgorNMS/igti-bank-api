@@ -1,1 +1,15 @@
-{ "nextId": 1, "accounts": [] }
+{
+  "nextId": 5,
+  "accounts": [
+    {
+      "id": 1,
+      "nome": "Igor Silva",
+      "balance": 50000.99
+    },
+    {
+      "id": 2,
+      "nome": "fe",
+      "balance": 50
+    }
+  ]
+}

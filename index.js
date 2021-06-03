@@ -1,3 +1,4 @@
+global.fileName = "accounts.json";
 import express from "express";
 import accountsRouter from "./routes/accounts.js";
 import { promises as fs } from "fs";
@@ -11,13 +12,13 @@ app.use("/accounts", accountsRouter);
 
 app.listen(3030, async () => {
   try {
-    await readFile("accounts.json");
+    await readFile(global.fileName);
   } catch (err) {
     const initialJson = {
       nextId: 1,
       accounts: [],
     };
-    writeFile("accounts.json", JSON.stringify(initialJson));
+    await writeFile(global.fileName, JSON.stringify(initialJson));
   }
   console.log("Started!");
 });
