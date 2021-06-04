@@ -10,7 +10,9 @@ app.use(express.json());
 
 app.use("/accounts", accountsRouter);
 
-app.listen(3030, async () => {
+const port = 3030;
+
+app.listen(port, async () => {
   try {
     await readFile(global.fileName);
   } catch (err) {
@@ -20,5 +22,5 @@ app.listen(3030, async () => {
     };
     await writeFile(global.fileName, JSON.stringify(initialJson));
   }
-  console.log("Started!");
+  console.log("Started on port: " +port);
 });
