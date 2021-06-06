@@ -1,6 +1,7 @@
 import express from "express";
 import winston from "winston";
-import accountsRouter from "./routes/accounts.js";
+import cors from "cors";
+import accountsRouter from "./routes/account.routes.js";
 import { promises as fs } from "fs";
 
 const { readFile, writeFile } = fs;
@@ -26,8 +27,10 @@ global.logger = winston.createLogger({
 
 const app = express();
 app.use(express.json());
-
-app.use("/accounts", accountsRouter);
+//para liberar o cors em todos os endpoints.
+app.use(cors());
+app.use(express.static("public"));
+app.use("/account", accountsRouter);
 
 const port = 3030;
 
